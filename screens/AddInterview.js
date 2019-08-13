@@ -81,7 +81,7 @@ const AddInterview = ({navigator}) => {
       <DashboardItemsContainer>
         <Picker
           selectedValue={company}
-          style={{height: 50, width: 100}}
+          style={{height: 50, width: 260}}
           onValueChange={OnPickerChange}
           placeholder={'select company'}
         >
@@ -91,7 +91,7 @@ const AddInterview = ({navigator}) => {
         </Picker>
         <Picker
           selectedValue={position}
-          style={{height: 50, width: 100}}
+          style={{height: 50, width: 260}}
           onValueChange={OnPositionPickerChange}
           placeholder={'select position'}
         >

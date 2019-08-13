@@ -3,6 +3,7 @@ import {Button, Text, View} from 'react-native';
 import Login from './screens/Login';
 import Dashboard from './screens/Dashboard';
 import AddInterview from './screens/AddInterview';
+import Interview from './screens/Interview';
 
 const First = ({navigator}) => (
   <View
@@ -45,5 +46,6 @@ export default {
 export const Alternate = {
   Login,
   Dashboard,
-  AddInterview
+  AddInterview,
+  Interview
 };
