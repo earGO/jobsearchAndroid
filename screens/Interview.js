@@ -57,7 +57,7 @@ const DashboardButtonYellow = {
 
 const buttons = ['Hello', 'World', 'Buttons'];
 
-const Dashboard = ({navigator}) => {
+const Interview = ({navigator, company, position}) => {
   const [footerSelected, SetFooterSelected] = useState(1);
 
   const onFooterPress = selectedIndex => {
@@ -93,4 +93,4 @@ const Dashboard = ({navigator}) => {
   );
 };
 
-export default Dashboard;
+export default Interview;

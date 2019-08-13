@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
+import {Picker} from 'react-native';
 import styled from 'styled-components';
 import {Button, ButtonGroup} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
-const LoginStyles = {
-  width: 260
-};
 
 const Container = styled.View`
   width: 100%;
@@ -57,28 +54,58 @@ const DashboardButtonYellow = {
 
 const buttons = ['Hello', 'World', 'Buttons'];
 
-const Dashboard = ({navigator}) => {
+const mockCompanies = ['apple', 'google', 'netflix', 'facebook'];
+const mockPositions = ['junior frontend', 'junior backend', 'junior fullstack'];
+
+const AddInterview = ({navigator}) => {
   const [footerSelected, SetFooterSelected] = useState(1);
+  const [company, setCompany] = useState('');
+  const [position, setPosition] = useState('');
 
   const onFooterPress = selectedIndex => {
     SetFooterSelected(selectedIndex);
   };
+
+  const OnPickerChange = (itemValue, itemIndex) => {
+    setCompany(itemValue);
+  };
+  const OnPositionPickerChange = (itemValue, itemIndex) => {
+    setPosition(itemValue);
+  };
+
   return (
     <Container>
       <MenuButtonContainer>
         <Button icon={<Icon name={'menu'} size={15} color={'white'} />} />
       </MenuButtonContainer>
       <DashboardItemsContainer>
-        <Button
-          icon={<Icon name={'add'} size={25} color="white" />}
-          title="New Interview"
-          buttonStyle={DashboardButtonGreen}
-          onPress={() => navigator.push('AddInterview')}
-        />
+        <Picker
+          selectedValue={company}
+          style={{height: 50, width: 100}}
+          onValueChange={OnPickerChange}
+          placeholder={'select company'}
+        >
+          {mockCompanies.map(item => {
+            return <Picker.Item label={item} value={item} key={item} />;
+          })}
+        </Picker>
+        <Picker
+          selectedValue={position}
+          style={{height: 50, width: 100}}
+          onValueChange={OnPositionPickerChange}
+          placeholder={'select position'}
+        >
+          {mockPositions.map(item => {
+            return <Picker.Item label={item} value={item} key={item} />;
+          })}
+        </Picker>
         <Button
           icon={<Icon name={'arrow-forward'} size={25} color="white" />}
           title="Continue interview"
           buttonStyle={DashboardButtonYellow}
+          onPress={() =>
+            navigator.push('Interview', {company: company, position: position})
+          }
         />
       </DashboardItemsContainer>
       <FooterContainer>
@@ -93,4 +120,4 @@ const Dashboard = ({navigator}) => {
   );
 };
 
-export default Dashboard;
+export default AddInterview;
